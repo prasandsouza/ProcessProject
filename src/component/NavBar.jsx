@@ -10,7 +10,7 @@ function Navbar() {
      const [expanded, setExpanded] = useState(false);
      const updatingDrawerFunction = useCallback((value) => {
           setExpanded(value);
-     });
+     },[]);
      const handleClick = () => {
           setExpanded(!expanded);
      };
