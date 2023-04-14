@@ -75,7 +75,6 @@ function StartProcess() {
             }
             {/* intially hide process  show when process is clicked */}
             {showDrawer &&
-
                 <div>
                     <div>
                         <h1 style={{ fontSize: '15px' }} >Process Request Form </h1>
