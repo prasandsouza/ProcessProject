@@ -4,7 +4,6 @@ import HomePage from './component/HomePage'
 import StartProcess from './component/StartProcess';
 import Nav from './component/Nav';
 import FormData from './component/Form';
-import Sample from './component/Sample';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
           <Route path='/' Component={HomePage} />
           <Route path='/processStart' Component={StartProcess} />
           <Route path='/process' Component={FormData} />
-          <Route path='sample' Component={Sample} />
         </Routes>
       </Router>
     </div>
