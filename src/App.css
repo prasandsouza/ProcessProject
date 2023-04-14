@@ -18,9 +18,16 @@ my-app {
      width: 100%;
      height: 100%;
 }
+.k-drawer{
+     border: 10px solid red;
+
+}
 .k-drawer-item {
      user-select: none;
+     width: 100%;
+
 }
+
 .k-drawer-item.k-selected {
      color: black;
      background-color: aliceblue;
@@ -31,9 +38,11 @@ my-app {
      background-color: aliceblue;
 }
 
-
 .k-widget{
-  width: 500px;
+  width: 350px;
+}
+.k-drawer-wrapper{
+     width: 350px !important;
 }
 .divContent {
      display: inline-block;

@@ -29,7 +29,6 @@ export const processReducer = (state = initialState, { type, payload }) => {
 
         case actionTypes.UPDATE_PROCESS:
             const { id, ...updatedProcess } = payload;
-            console.log(payload)
             const updatedProcesses = state.map((process) =>
                 process.id === id ? { ...process, ...updatedProcess } : process
             );

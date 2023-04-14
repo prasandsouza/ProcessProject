@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProcess } from '../redux/action/action'
 import '@progress/kendo-theme-default/dist/all.css';
@@ -9,11 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardBody } from '@progress/kendo-react-layout';
 
 
-function StartProcess() {
+
+const StartProcess = memo(({ testing }) => {
+    console.log('checking')
     const [processData, setProcessData] = useState([])
     const [updatedData, setUpdatedData] = useState([])
     const [showDrawer, setShowDrawer] = useState(false)
     const [reason, setReason] = useState('')
+
     const navigate = useNavigate()
     const [errorString, setErrorString] = useState('')
 
@@ -39,6 +42,7 @@ function StartProcess() {
             updatedData.status = 'running'
             dispatch(updateProcess(updatedData))
             setReason('')
+            testing(false)
             setShowDrawer(false)
             navigate('/')
         }
@@ -48,23 +52,28 @@ function StartProcess() {
         setErrorString('')
         setShowDrawer(false)
     }
+    const sample = () => {
+        console.log('hi')
+        testing(false)
+
+    }
     return (
         <div >
+            <Button onClick={sample}>
+                close me
+            </Button>
             {/* should hide when clicked on process */}
             {!showDrawer &&
-                <div>
+                <div style={{ width: '318px' }}>
                     <div>
-                        <h1> Start Process </h1>
+                        <h1 style={{ textAlign: 'center' }} > Start Process </h1>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: "space-around" }}>
                         {/* list of Process */}
                         {processData.length > 0 ? <> {processData.map((value) => {
                             return (
-                                // <Button themeColor='info' onClick={() => updatingfunction(value)} style={{ cursor: "pointer", padding: '45px', marginTop: '10px' }}>
-                                //     {value.name}
-                                // </Button>
-                                <Card onClick={() => updatingfunction(value)} type='info' style={{padding:'20px', textAlign: 'center'}}>
-                                    <CardBody>
+                                <Card onClick={() => updatingfunction(value)} type='info' style={{ height: '100px', width: '125px', textAlign: 'center', marginBottom: '10px' }}>
+                                    <CardBody style={{ textAlign: 'center' }}>
                                         {value.name}
                                     </CardBody>
                                 </Card>
@@ -75,9 +84,9 @@ function StartProcess() {
             }
             {/* intially hide process  show when process is clicked */}
             {showDrawer &&
-                <div>
+                <div style={{ width: '318px' }}>
                     <div>
-                        <h1 style={{ fontSize: '15px' }} >Process Request Form </h1>
+                        <h1 style={{ fontSize: '15px', textAlign: 'center' }} >Process Request Form </h1>
                     </div>
                     <div>
                         <Label style={{ color: 'black' }}> Process Name</Label>
@@ -93,15 +102,17 @@ function StartProcess() {
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
                                 <Label> Reason</Label>
                                 <TextArea type='text' onChange={(e) => setReason(e.target.value)} />
-                                {errorString.length > 0 ? <span style={{color:'red'}}>{errorString}</span> : <span></span>}
-                                <Button onClick={startProcessFunction} themeColor='info' style={{ marginTop: '20px' }}> Start process</Button>
-                                <Button onClick={processFunction} themeColor='info' style={{ marginTop: '20px', cursor: 'pointer' }}> Process</Button>
+                                {errorString.length > 0 ? <span style={{ color: 'red' }}>{errorString}</span> : <span></span>}
+                                <div style={{display:'flex' ,flexWrap:'wrap' ,justifyContent:'space-between'}}>
+                                    <Button onClick={startProcessFunction} themeColor='info' style={{ marginTop: '20px', width: "150px" }}> Start process</Button>
+                                    <Button onClick={processFunction} themeColor='info' style={{ marginTop: '20px', cursor: 'pointer', width: "150px" }}> Process</Button>
+                                </div>
                             </div>
                         }
                     </div>
                 </div>}
         </div>
     )
-}
+})
 
 export default StartProcess

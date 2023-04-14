@@ -6,9 +6,7 @@ import { Label } from "@progress/kendo-react-labels";
 
 function HomePage() {
     const data = useSelector((state) => state.allProcess)
-    console.log(data)
     let filterData = data.filter((data) => data.status === 'running')
-    console.log(filterData)
     return (
         <div style={{ display:'flex' , alignItems:'center', justifyContent:'center'}}>
             <div style={{width:'700px',marginTop:'70px '}}>
