@@ -6,7 +6,7 @@ import { Button } from '@progress/kendo-react-buttons';
 import { TextArea } from '@progress/kendo-react-inputs';
 import { Label } from "@progress/kendo-react-labels";
 import { useNavigate } from 'react-router-dom';
-import { Card, CardTitle, CardBody, CardActions } from '@progress/kendo-react-layout';
+import { Card, CardBody } from '@progress/kendo-react-layout';
 
 
 function StartProcess() {

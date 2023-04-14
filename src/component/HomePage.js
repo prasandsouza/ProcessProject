@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import '@progress/kendo-theme-default/dist/all.css';
-import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
+import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { Label } from "@progress/kendo-react-labels";
 
 function HomePage() {
